@@ -2,327 +2,144 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Puma City FC</title>
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Puma City FC — Official Club Website">
+
+    <title>Puma City FC | Official Website</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div id="app">
+<div class="site">
 
-    <!-- TOP BAR -->
-    <header class="topbar">
+    <!-- HEADER -->
+    <header class="header">
 
-        <div class="club-brand">
-            <div class="club-logo">PC</div>
+        <div class="brand" onclick="openPage('home')">
 
-            <div class="club-name">
-                PUMA CITY FC
-                <span>FOOTBALL CLUB</span>
+            <div class="crest">
+                PC
             </div>
+
+            <div class="brand-text">
+                <strong>PUMA CITY FC</strong>
+                <span>LEGEND LEAGUE</span>
+            </div>
+
         </div>
 
-        <button class="menu-btn" onclick="showMenu()">☰</button>
+        <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
     </header>
 
 
-    <!-- HOME -->
-    <main id="home">
+    <!-- MENU -->
+    <div class="menu-overlay" id="menuOverlay">
 
-        <!-- HERO -->
-        <section class="hero">
+        <div class="menu-inner">
 
-            <div class="hero-label">
-                WELCOME TO PUMA CITY
+            <div class="menu-top">
+                <span>MENU</span>
+                <button onclick="toggleMenu()">×</button>
             </div>
 
-            <h1>
-                MORE THAN<br>
-                <span>FOOTBALL.</span>
-            </h1>
+            <nav class="menu-links">
 
-            <p class="hero-text">
-                The official home of Puma City FC.
-                Follow our matches, squad, results and journey.
-            </p>
-
-        </section>
-
-
-        <!-- NEXT MATCH -->
-        <section class="section">
-
-            <div class="section-head">
-                <h2 class="section-title">Next Match</h2>
-
-                <span class="section-link">
-                    FIXTURE
-                </span>
-            </div>
-
-
-            <div class="match-card">
-
-                <div class="match-meta">
-                    <span>LEAGUE MATCH</span>
-                    <span>18 SEP 2026</span>
-                </div>
-
-
-                <div class="match-teams">
-
-                    <div class="team">
-
-                        <div class="team-badge">
-                            PC
-                        </div>
-
-                        <div class="team-name">
-                            PUMA CITY
-                        </div>
-
-                    </div>
-
-
-                    <div class="vs">
-                        VS
-                    </div>
-
-
-                    <div class="team">
-
-                        <div class="team-badge">
-                            FC
-                        </div>
-
-                        <div class="team-name">
-                            RIVAL FC
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="match-time">
-                    19:30 • PUMA CITY STADIUM
-                </div>
-
-
-                <button class="primary-btn"
-                        onclick="openSection('fixtures')">
-                    MATCH CENTRE
+                <button onclick="openPage('home')">
+                    <b>01</b>
+                    HOME
+                    <span>→</span>
                 </button>
 
-            </div>
-
-        </section>
-
-
-        <!-- LATEST RESULT -->
-        <section class="section">
-
-            <div class="section-head">
-
-                <h2 class="section-title">
-                    Latest Result
-                </h2>
-
-                <span class="section-link">
-                    RESULTS
-                </span>
-
-            </div>
-
-
-            <div class="match-card">
-
-                <div class="match-meta">
-                    <span>LEAGUE MATCH</span>
-                    <span>12 SEP 2026</span>
-                </div>
-
-
-                <div class="match-teams">
-
-                    <div class="team">
-
-                        <div class="team-badge">
-                            PC
-                        </div>
-
-                        <div class="team-name">
-                            PUMA CITY
-                        </div>
-
-                    </div>
-
-
-                    <div class="vs">
-                        <strong>2 — 1</strong>
-                    </div>
-
-
-                    <div class="team">
-
-                        <div class="team-badge">
-                            FC
-                        </div>
-
-                        <div class="team-name">
-                            RIVAL FC
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="match-time">
-                    FULL TIME • HOME
-                </div>
-
-
-                <button class="primary-btn"
-                        onclick="openSection('results')">
-                    VIEW RESULT
+                <button onclick="openPage('squad')">
+                    <b>02</b>
+                    SQUAD
+                    <span>→</span>
                 </button>
 
-            </div>
+                <button onclick="openPage('fixtures')">
+                    <b>03</b>
+                    FIXTURES
+                    <span>→</span>
+                </button>
 
-        </section>
+                <button onclick="openPage('news')">
+                    <b>04</b>
+                    NEWS
+                    <span>→</span>
+                </button>
 
+                <button onclick="openPage('shop')">
+                    <b>05</b>
+                    CLUB SHOP
+                    <span>→</span>
+                </button>
 
-        <!-- CLUB STATS -->
-        <section class="section">
+                <button onclick="openPage('about')">
+                    <b>06</b>
+                    ABOUT THE CLUB
+                    <span>→</span>
+                </button>
 
-            <div class="section-head">
-
-                <h2 class="section-title">
-                    Club Overview
-                </h2>
-
-            </div>
-
-
-            <div class="stats-grid">
-
-                <div class="stat-card">
-
-                    <span class="stat-number">
-                        04
-                    </span>
-
-                    <span class="stat-label">
-                        Position
-                    </span>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <span class="stat-number">
-                        12
-                    </span>
-
-                    <span class="stat-label">
-                        Played
-                    </span>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <span class="stat-number">
-                        24
-                    </span>
-
-                    <span class="stat-label">
-                        Points
-                    </span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- SPONSOR -->
-        <div class="sponsor">
-
-            <div class="sponsor-label">
-                Main Sponsor
-            </div>
-
-            <div class="sponsor-name">
-                VERTEX LABS
-            </div>
+            </nav>
 
         </div>
 
-    </main>
+    </div>
 
 
-    <!-- BOTTOM NAVIGATION -->
+    <!-- MAIN -->
+    <main id="app"></main>
+
+
+    <!-- BOTTOM NAV -->
     <nav class="bottom-nav">
 
-        <button class="nav-item active"
-                onclick="openSection('home')">
-
-            <span class="nav-icon">⌂</span>
-            HOME
-
+        <button class="nav-item active" onclick="openPage('home')">
+            <span>⌂</span>
+            <small>HOME</small>
         </button>
 
-
-        <button class="nav-item"
-                onclick="openSection('squad')">
-
-            <span class="nav-icon">♟</span>
-            SQUAD
-
+        <button class="nav-item" onclick="openPage('squad')">
+            <span>♙</span>
+            <small>SQUAD</small>
         </button>
 
-
-        <button class="nav-item"
-                onclick="openSection('fixtures')">
-
-            <span class="nav-icon">◷</span>
-            FIXTURES
-
+        <button class="nav-item" onclick="openPage('fixtures')">
+            <span>▦</span>
+            <small>FIXTURES</small>
         </button>
 
-
-        <button class="nav-item"
-                onclick="openSection('table')">
-
-            <span class="nav-icon">▤</span>
-            TABLE
-
+        <button class="nav-item" onclick="openPage('shop')">
+            <span>▢</span>
+            <small>SHOP</small>
         </button>
 
-
-        <button class="nav-item"
-                onclick="showMenu()">
-
-            <span class="nav-icon">•••</span>
-            MORE
-
+        <button class="nav-item" onclick="toggleMenu()">
+            <span>•••</span>
+            <small>MORE</small>
         </button>
 
     </nav>
 
 </div>
 
-
 <script src="script.js"></script>
 
 </body>
-        </html>
+</html>
