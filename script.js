@@ -1,182 +1,880 @@
-const squad = [
-["Rohan Kapoor",18,"Auravia","🇦🇺","GK","Goalkeepers"],
-["Victor Hale",25,"Auravia","🇦🇺","CB","Defenders"],
-["Aaron Bell",24,"Auravia","🇦🇺","CB","Defenders"],
-["Kai Mercer",21,"Auravia","🇦🇺","RB","Defenders"],
-["Julian Costa",23,"Portugal","🇵🇹","RB/LB","Defenders"],
-["Nico Arlen",20,"Auravia","🇦🇺","CAM/CM","Midfielders"],
-["Mateo Silvan",23,"Auravia","🇦🇺","CM/CDM","Midfielders"],
-["Daniel Voss",22,"Auravia","🇦🇺","CDM","Midfielders"],
-["Ethan Cruz",21,"Auravia","🇦🇺","RW","Forwards"],
-["Alex Riven",19,"Auravia","🇦🇺","LW/ST","Forwards"],
-["Rishabh Singh",18,"Auravia","🇦🇺","LW/RW","Forwards"],
-["Aman Choudhary",17,"Auravia","🇦🇺","GK","Goalkeepers"],
-["Felix Arden",18,"Auravia","🇦🇺","CB","Defenders"],
-["Rahul Nair",19,"Auravia","🇦🇺","RB/RM","Defenders"],
-["Dev Malhotra",18,"Auravia","🇦🇺","CM","Midfielders"],
-["Kunal Shah",18,"Auravia","🇦🇺","CAM","Midfielders"],
-["Kabir Sharma",17,"Auravia","🇦🇺","ST/RW","Forwards"],
-["Yuvraj Patel",17,"Auravia","🇦🇺","CAM","Midfielders"]
+const app = document.getElementById("app");
+
+const players = [
+    ["01","Rohan Kapoor","GK","Auravia","🇦🇺"],
+    ["02","Victor Hale","CB","Auravia","🇦🇺"],
+    ["03","Aaron Bell","CB","Auravia","🇦🇺"],
+    ["04","Kai Mercer","RB","Auravia","🇦🇺"],
+    ["05","Julian Costa","RB/LB","Portugal","🇵🇹"],
+    ["06","Nico Arlen","CAM/CM","Auravia","🇦🇺"],
+    ["07","Mateo Silvan","CM/CDM","Auravia","🇦🇺"],
+    ["08","Daniel Voss","CDM","Auravia","🇦🇺"],
+    ["09","Ethan Cruz","RW","Auravia","🇦🇺"],
+    ["10","Alex Riven","LW/ST","Auravia","🇦🇺"],
+    ["11","Rishabh Singh","LW/RW","Auravia","🇦🇺"],
+    ["12","Aman Choudhary","GK","Auravia","🇦🇺"],
+    ["13","Felix Arden","CB","Auravia","🇦🇺"],
+    ["14","Rahul Nair","RB/RM","Auravia","🇦🇺"],
+    ["15","Dev Malhotra","CM","Auravia","🇦🇺"],
+    ["16","Kunal Shah","CAM","Auravia","🇦🇺"],
+    ["17","Kabir Sharma","ST/RW","Auravia","🇦🇺"],
+    ["18","Yuvraj Patel","CAM","Auravia","🇦🇺"]
 ];
 
-function openSection(page) {
-    if(page === "home") {
-        location.reload();
-        return;
+function openPage(page){
+
+    closeMenu();
+
+    document.querySelectorAll(".nav-item").forEach(x=>{
+        x.classList.remove("active");
+    });
+
+    if(page === "home"){
+        document.querySelectorAll(".nav-item")[0].classList.add("active");
+        homePage();
     }
 
-    if(page === "squad") {
-        renderSquad();
-        setActiveNav(1);
-        window.scrollTo(0,0);
-        return;
+    else if(page === "squad"){
+        document.querySelectorAll(".nav-item")[1].classList.add("active");
+        squadPage();
     }
 
-    if(page === "fixtures") {
-        showPage("FIXTURES");
-        setActiveNav(2);
-        return;
+    else if(page === "fixtures"){
+        document.querySelectorAll(".nav-item")[2].classList.add("active");
+        fixturesPage();
     }
 
-    if(page === "table") {
-        showPage("LEAGUE TABLE");
-        setActiveNav(3);
-        return;
+    else if(page === "shop"){
+        document.querySelectorAll(".nav-item")[3].classList.add("active");
+        shopPage();
     }
 
-    showPage("RESULTS");
+    else if(page === "news"){
+        newsPage();
+    }
+
+    else if(page === "about"){
+        aboutPage();
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 }
 
-function renderSquad() {
-    const main = document.getElementById("home");
 
-    let html = `
-    <section class="page-hero">
-        <div class="hero-label">PUMA CITY FC</div>
-        <h1>FIRST TEAM<br><span>SQUAD.</span></h1>
-        <p class="hero-text">Meet the players representing Puma City FC.</p>
-    </section>
-    <section class="squad-section">
-    `;
+/* ================================
+   HOME
+================================ */
 
-    ["Goalkeepers","Defenders","Midfielders","Forwards"].forEach(group => {
+function homePage(){
 
-        const players = squad.filter(p => p[5] === group);
+    app.innerHTML = `
 
-        html += `
-        <div class="squad-group">
+        <section class="hero">
+
+            <div class="hero-image-placeholder">
+                <span>PCFC</span>
+            </div>
+
+            <div class="hero-content">
+
+                <div class="hero-label">
+                    PUMA CITY FC
+                </div>
+
+                <h1>
+                    FOOTBALL<br>
+                    <span>BEYOND</span><br>
+                    LIMITS.
+                </h1>
+
+                <p class="hero-sub">
+                    Skill. Unity. Ambition.
+                    One club, one vision, one city.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button class="btn btn-light"
+                            onclick="openPage('about')">
+                        OUR CLUB →
+                    </button>
+
+                    <button class="btn btn-primary"
+                            onclick="openPage('squad')">
+                        MEET THE TEAM →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="section">
+
             <div class="section-head">
-                <h2 class="section-title">${group}</h2>
-                <span class="section-link">${players.length} PLAYERS</span>
-            </div>
-            <div class="player-grid">
-        `;
 
-        players.forEach(player => {
-            const i = squad.indexOf(player);
-
-            html += `
-            <article class="player-card" onclick="openPlayer(${i})">
-                <div class="player-number">${String(i+1).padStart(2,"0")}</div>
-                <div class="player-avatar">
-                    ${player[4] === "GK" ? "GK" : "PC"}
-                </div>
-                <div class="player-info">
-                    <div class="player-position">${player[4]}</div>
-                    <h3>${player[0]}</h3>
-                    <div class="player-meta">
-                        ${player[3]} ${player[2]} • ${player[1]} YRS
+                <div>
+                    <div class="section-kicker">
+                        NEXT MATCH
                     </div>
+
+                    <h2 class="section-title">
+                        Matchday
+                    </h2>
                 </div>
+
+                <span class="view-all">
+                    18 SEP 2026
+                </span>
+
+            </div>
+
+            <div class="match-card">
+
+                <div class="match-top">
+
+                    <span class="match-label">
+                        LEGEND LEAGUE
+                    </span>
+
+                    <span class="match-date">
+                        19:30 LOCAL
+                    </span>
+
+                </div>
+
+                <div class="teams">
+
+                    <div>
+                        <div class="team-badge">PC</div>
+                        <div class="team-name">
+                            PUMA CITY FC
+                        </div>
+                    </div>
+
+                    <div class="vs">
+                        VS
+                    </div>
+
+                    <div>
+                        <div class="team-badge">RF</div>
+                        <div class="team-name">
+                            RIVAL FC
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="match-info">
+                    PUMA CITY STADIUM<br>
+                    18 SEPTEMBER 2026
+                </div>
+
+                <button class="match-button"
+                        onclick="openPage('fixtures')">
+                    MATCH PREVIEW →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <section class="section">
+
+            <div class="section-head">
+
+                <div>
+                    <div class="section-kicker">
+                        LATEST
+                    </div>
+
+                    <h2 class="section-title">
+                        Club News
+                    </h2>
+                </div>
+
+                <button class="view-all"
+                        onclick="openPage('news')">
+                    VIEW ALL →
+                </button>
+
+            </div>
+
+            <article class="news-card"
+                     onclick="openPage('news')">
+
+                <div class="news-image">
+                    PCFC
+                </div>
+
+                <div class="news-body">
+
+                    <span class="news-tag">
+                        CLUB NEWS
+                    </span>
+
+                    <span class="news-date">
+                        10 SEP 2026
+                    </span>
+
+                    <h3>
+                        Puma City FC Ready For A New Chapter
+                    </h3>
+
+                    <p>
+                        The squad looks stronger as we prepare
+                        for the next stage of the Legend League.
+                    </p>
+
+                </div>
+
             </article>
-            `;
-        });
 
-        html += `
+        </section>
+
+
+        <section class="section section-dark">
+
+            <div class="section-head">
+
+                <div>
+                    <div class="section-kicker">
+                        THE CLUB
+                    </div>
+
+                    <h2 class="section-title">
+                        By The Numbers
+                    </h2>
+                </div>
+
             </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <strong>2026</strong>
+                    <span>FOUNDED</span>
+                </div>
+
+                <div class="stat">
+                    <strong>01</strong>
+                    <span>CLUB</span>
+                </div>
+
+                <div class="stat">
+                    <strong>18</strong>
+                    <span>PLAYERS</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div class="sponsor">
+
+            <span>
+                OFFICIAL MAIN PARTNER
+            </span>
+
+            <strong>
+                VERTEX LABS
+            </strong>
+
         </div>
-        `;
-    });
 
-    html += `</section>`;
-
-    main.innerHTML = html;
+    `;
 }
 
-function openPlayer(i) {
-    const p = squad[i];
 
-    document.getElementById("home").innerHTML = `
-    <section class="coming-page">
+/* ================================
+   SQUAD
+================================ */
 
-        <div class="hero-label">PUMA CITY FC</div>
+function squadPage(){
 
-        <h1 style="margin-top:15px">
-            ${p[0]}<br>
-            <span>${p[4]}</span>
-        </h1>
+    app.innerHTML = `
 
-        <div class="squad-summary" style="width:100%;margin-top:30px">
+        <section class="page-header">
 
-            <div>
-                <strong>${p[1]}</strong>
-                <span>AGE</span>
-            </div>
+            <small>PUMA CITY FC</small>
 
-            <div>
-                <strong>${p[3]}</strong>
-                <span>NATION</span>
-            </div>
+            <h1>
+                FIRST TEAM<br>
+                SQUAD
+            </h1>
 
-            <div>
-                <strong>${p[4]}</strong>
-                <span>POSITION</span>
-            </div>
+        </section>
+
+        <div class="filters">
+
+            <button class="filter active"
+                    onclick="filterPlayers('ALL',this)">
+                ALL
+            </button>
+
+            <button class="filter"
+                    onclick="filterPlayers('GK',this)">
+                GOALKEEPERS
+            </button>
+
+            <button class="filter"
+                    onclick="filterPlayers('DEF',this)">
+                DEFENDERS
+            </button>
+
+            <button class="filter"
+                    onclick="filterPlayers('MID',this)">
+                MIDFIELDERS
+            </button>
+
+            <button class="filter"
+                    onclick="filterPlayers('FWD',this)">
+                FORWARDS
+            </button>
 
         </div>
 
-        <button class="primary-btn"
-            onclick="renderSquad();setActiveNav(1);window.scrollTo(0,0)">
-            ← BACK TO SQUAD
-        </button>
+        <div class="players" id="players"></div>
 
-    </section>
+    `;
+
+    renderPlayers("ALL");
+}
+
+
+function getGroup(position){
+
+    if(position === "GK") return "GK";
+
+    if(
+        position === "CB" ||
+        position === "RB" ||
+        position === "RB/LB" ||
+        position === "RB/RM"
+    ){
+        return "DEF";
+    }
+
+    if(
+        position === "CAM" ||
+        position === "CAM/CM" ||
+        position === "CM/CDM" ||
+        position === "CDM" ||
+        position === "CM"
+    ){
+        return "MID";
+    }
+
+    return "FWD";
+}
+
+
+function renderPlayers(filter){
+
+    const box = document.getElementById("players");
+
+    if(!box) return;
+
+    const list = players.filter(p=>{
+        return filter === "ALL" || getGroup(p[2]) === filter;
+    });
+
+    box.innerHTML = list.map((p)=>`
+
+        <article class="player"
+                 onclick="playerProfile('${p[1]}')">
+
+            <div class="player-number">
+                ${p[0]}
+            </div>
+
+            <div class="player-photo">
+                ${p[2] === "GK" ? "GK" : "PC"}
+            </div>
+
+            <div class="player-info">
+
+                <h3>${p[1]}</h3>
+
+                <p>
+                    ${p[4]} ${p[3]} • ${p[2]}
+                </p>
+
+            </div>
+
+            <div class="player-arrow">
+                →
+            </div>
+
+        </article>
+
+    `).join("");
+}
+
+
+function filterPlayers(filter,button){
+
+    document.querySelectorAll(".filter").forEach(x=>{
+        x.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    renderPlayers(filter);
+}
+
+
+/* ================================
+   PLAYER PROFILE
+================================ */
+
+function playerProfile(name){
+
+    const p = players.find(x=>x[1] === name);
+
+    if(!p) return;
+
+    app.innerHTML = `
+
+        <section class="page-header">
+
+            <small>PUMA CITY FC • PLAYER</small>
+
+            <h1>
+                ${p[1]}
+            </h1>
+
+        </section>
+
+        <section class="section">
+
+            <div class="player-photo"
+                 style="
+                    width:100%;
+                    height:300px;
+                    font-size:60px;
+                 ">
+                ${p[2] === "GK" ? "GK" : "PC"}
+            </div>
+
+            <div class="stats"
+                 style="margin-top:15px">
+
+                <div class="stat">
+                    <strong>${p[0]}</strong>
+                    <span>NUMBER</span>
+                </div>
+
+                <div class="stat">
+                    <strong>${p[2]}</strong>
+                    <span>POSITION</span>
+                </div>
+
+                <div class="stat">
+                    <strong>${p[4]}</strong>
+                    <span>NATION</span>
+                </div>
+
+            </div>
+
+            <div style="margin-top:20px">
+
+                <button class="match-button"
+                        onclick="squadPage()">
+                    ← BACK TO SQUAD
+                </button>
+
+            </div>
+
+        </section>
+
     `;
 
     window.scrollTo(0,0);
 }
 
-function showPage(title) {
-    document.getElementById("home").innerHTML = `
-    <section class="coming-page">
 
-        <div class="coming-icon">PC</div>
+/* ================================
+   FIXTURES
+================================ */
 
-        <div class="hero-label">PUMA CITY FC</div>
+function fixturesPage(){
 
-        <h1>
-            ${title}<br>
-            <span>COMING SOON.</span>
-        </h1>
+    app.innerHTML = `
 
-        <p>This section is currently being built.</p>
+        <section class="page-header">
 
-        <button class="primary-btn" onclick="openSection('home')">
-            BACK TO HOME
-        </button>
+            <small>PUMA CITY FC</small>
 
-    </section>
+            <h1>
+                FIXTURES
+            </h1>
+
+        </section>
+
+        <div class="filters">
+
+            <button class="filter active">
+                UPCOMING
+            </button>
+
+            <button class="filter"
+                    onclick="resultsPage()">
+                RESULTS
+            </button>
+
+            <button class="filter">
+                TABLE
+            </button>
+
+        </div>
+
+        ${fixture("20","SEP","RIVAL FC","PUMA CITY FC","RIVERDALE ARENA","19:00")}
+
+        ${fixture("27","SEP","PUMA CITY FC","SKYTON FC","PUMA CITY STADIUM","18:30")}
+
+        ${fixture("04","OCT","UNITED CITY","PUMA CITY FC","NATIONAL ARENA","20:00")}
+
+        ${fixture("11","OCT","PUMA CITY FC","VALOR FC","PUMA CITY STADIUM","18:30")}
+
+        ${fixture("18","OCT","KINGS FC","PUMA CITY FC","KINGS ARENA","19:00")}
+
     `;
-
-    window.scrollTo(0,0);
 }
 
-function setActiveNav(index) {
-    document.querySelectorAll(".nav-item").forEach((item,i) => {
-        item.classList.toggle("active", i === index);
-    });
+
+function fixture(day,month,home,away,venue,time){
+
+    return `
+
+        <article class="fixture">
+
+            <div class="fixture-date">
+
+                <strong>${day}</strong>
+
+                <span>${month}</span>
+
+            </div>
+
+            <div class="fixture-teams">
+
+                <strong>
+                    ${home}
+                    <br>
+                    VS
+                    <br>
+                    ${away}
+                </strong>
+
+                <span>
+                    ${venue} • ${time}
+                </span>
+
+            </div>
+
+            <div class="fixture-arrow">
+                →
+            </div>
+
+        </article>
+
+    `;
 }
 
-function showMenu() {
-    showPage("MORE");
-                  }
+
+/* ================================
+   RESULTS
+================================ */
+
+function resultsPage(){
+
+    app.innerHTML = `
+
+        <section class="page-header">
+
+            <small>PUMA CITY FC</small>
+
+            <h1>
+                RESULTS
+            </h1>
+
+        </section>
+
+        ${fixture("12","SEP","PUMA CITY FC","RIVAL FC","PUMA CITY STADIUM","2 — 1")}
+
+        ${fixture("06","SEP","SKYTON FC","PUMA CITY FC","SKYTON ARENA","1 — 1")}
+
+        ${fixture("30","AUG","PUMA CITY FC","VALOR FC","PUMA CITY STADIUM","3 — 0")}
+
+    `;
+}
+
+
+/* ================================
+   NEWS
+================================ */
+
+function newsPage(){
+
+    app.innerHTML = `
+
+        <section class="page-header">
+
+            <small>PUMA CITY FC</small>
+
+            <h1>
+                LATEST<br>
+                NEWS
+            </h1>
+
+        </section>
+
+        <section class="section">
+
+            ${newsCard(
+                "CLUB NEWS",
+                "10 SEP 2026",
+                "Puma City FC Ready For A New Chapter"
+            )}
+
+            ${newsCard(
+                "STADIUM",
+                "08 SEP 2026",
+                "Home Ground Ready For A Big Season"
+            )}
+
+            ${newsCard(
+                "TEAM NEWS",
+                "06 SEP 2026",
+                "The Squad Continues To Push Forward"
+            )}
+
+        </section>
+
+    `;
+}
+
+
+function newsCard(tag,date,title){
+
+    return `
+
+        <article class="news-card">
+
+            <div class="news-image">
+                PCFC
+            </div>
+
+            <div class="news-body">
+
+                <span class="news-tag">
+                    ${tag}
+                </span>
+
+                <span class="news-date">
+                    ${date}
+                </span>
+
+                <h3>
+                    ${title}
+                </h3>
+
+                <p>
+                    Latest updates from around
+                    Puma City FC.
+                </p>
+
+            </div>
+
+        </article>
+
+    `;
+}
+
+
+/* ================================
+   SHOP
+================================ */
+
+function shopPage(){
+
+    app.innerHTML = `
+
+        <section class="page-header">
+
+            <small>PUMA CITY FC</small>
+
+            <h1>
+                CLUB<br>
+                SHOP
+            </h1>
+
+        </section>
+
+        <div class="filters">
+
+            <button class="filter active">
+                KITS
+            </button>
+
+            <button class="filter">
+                TRAINING
+            </button>
+
+            <button class="filter">
+                ACCESSORIES
+            </button>
+
+        </div>
+
+        ${product("HOME JERSEY","2026/27","₹2,499")}
+
+        ${product("AWAY JERSEY","2026/27","₹2,499")}
+
+        ${product("THIRD JERSEY","2026/27","₹2,499")}
+
+        <section class="section">
+
+            <div class="news-image"
+                 style="height:160px;border-radius:12px">
+                WEAR THE PRIDE
+            </div>
+
+        </section>
+
+    `;
+}
+
+
+function product(name,season,price){
+
+    return `
+
+        <article class="product">
+
+            <div class="product-image">
+                PC
+            </div>
+
+            <div class="product-info">
+
+                <h3>
+                    ${name}
+                </h3>
+
+                <p>
+                    PUMA CITY FC • ${season}
+                </p>
+
+                <strong>
+                    ${price}
+                </strong>
+
+            </div>
+
+            <div class="product-arrow">
+                →
+            </div>
+
+        </article>
+
+    `;
+}
+
+
+/* ================================
+   ABOUT
+================================ */
+
+function aboutPage(){
+
+    app.innerHTML = `
+
+        <div class="about-visual">
+
+            <h2>
+                SAME CLUB.<br>
+                BIGGER<br>
+                STORIES.
+            </h2>
+
+        </div>
+
+        <section class="about-copy">
+
+            <div class="section-kicker">
+                PUMA CITY FC
+            </div>
+
+            <h2>
+                A CLUB BUILT<br>
+                FOR GREATNESS.
+            </h2>
+
+            <p>
+                Puma City FC is driven by passion,
+                football and ambition. Our journey
+                is about more than matches — it is
+                about building a community and
+                creating something worth believing in.
+            </p>
+
+            <div class="about-stats">
+
+                <div class="stat">
+                    <strong>2026</strong>
+                    <span>FOUNDED</span>
+                </div>
+
+                <div class="stat">
+                    <strong>01</strong>
+                    <span>CLUB</span>
+                </div>
+
+                <div class="stat">
+                    <strong>18</strong>
+                    <span>PLAYERS</span>
+                </div>
+
+            </div>
+
+        </section>
+
+    `;
+}
+
+
+/* ================================
+   MENU
+================================ */
+
+function toggleMenu(){
+
+    const menu =
+        document.getElementById("menuOverlay");
+
+    menu.classList.toggle("open");
+}
+
+
+function closeMenu(){
+
+    document
+        .getElementById("menuOverlay")
+        .classList.remove("open");
+}
+
+
+/* ================================
+   START
+================================ */
+
+homePage();
