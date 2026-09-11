@@ -3,13 +3,326 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Puma City FC</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>Puma City FC</h1>
-    <p>Official Club Website</p>
+<div id="app">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+
+        <div class="club-brand">
+            <div class="club-logo">PC</div>
+
+            <div class="club-name">
+                PUMA CITY FC
+                <span>FOOTBALL CLUB</span>
+            </div>
+        </div>
+
+        <button class="menu-btn" onclick="showMenu()">☰</button>
+
+    </header>
+
+
+    <!-- HOME -->
+    <main id="home">
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="hero-label">
+                WELCOME TO PUMA CITY
+            </div>
+
+            <h1>
+                MORE THAN<br>
+                <span>FOOTBALL.</span>
+            </h1>
+
+            <p class="hero-text">
+                The official home of Puma City FC.
+                Follow our matches, squad, results and journey.
+            </p>
+
+        </section>
+
+
+        <!-- NEXT MATCH -->
+        <section class="section">
+
+            <div class="section-head">
+                <h2 class="section-title">Next Match</h2>
+
+                <span class="section-link">
+                    FIXTURE
+                </span>
+            </div>
+
+
+            <div class="match-card">
+
+                <div class="match-meta">
+                    <span>LEAGUE MATCH</span>
+                    <span>18 SEP 2026</span>
+                </div>
+
+
+                <div class="match-teams">
+
+                    <div class="team">
+
+                        <div class="team-badge">
+                            PC
+                        </div>
+
+                        <div class="team-name">
+                            PUMA CITY
+                        </div>
+
+                    </div>
+
+
+                    <div class="vs">
+                        VS
+                    </div>
+
+
+                    <div class="team">
+
+                        <div class="team-badge">
+                            FC
+                        </div>
+
+                        <div class="team-name">
+                            RIVAL FC
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="match-time">
+                    19:30 • PUMA CITY STADIUM
+                </div>
+
+
+                <button class="primary-btn"
+                        onclick="openSection('fixtures')">
+                    MATCH CENTRE
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- LATEST RESULT -->
+        <section class="section">
+
+            <div class="section-head">
+
+                <h2 class="section-title">
+                    Latest Result
+                </h2>
+
+                <span class="section-link">
+                    RESULTS
+                </span>
+
+            </div>
+
+
+            <div class="match-card">
+
+                <div class="match-meta">
+                    <span>LEAGUE MATCH</span>
+                    <span>12 SEP 2026</span>
+                </div>
+
+
+                <div class="match-teams">
+
+                    <div class="team">
+
+                        <div class="team-badge">
+                            PC
+                        </div>
+
+                        <div class="team-name">
+                            PUMA CITY
+                        </div>
+
+                    </div>
+
+
+                    <div class="vs">
+                        <strong>2 — 1</strong>
+                    </div>
+
+
+                    <div class="team">
+
+                        <div class="team-badge">
+                            FC
+                        </div>
+
+                        <div class="team-name">
+                            RIVAL FC
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="match-time">
+                    FULL TIME • HOME
+                </div>
+
+
+                <button class="primary-btn"
+                        onclick="openSection('results')">
+                    VIEW RESULT
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- CLUB STATS -->
+        <section class="section">
+
+            <div class="section-head">
+
+                <h2 class="section-title">
+                    Club Overview
+                </h2>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <span class="stat-number">
+                        04
+                    </span>
+
+                    <span class="stat-label">
+                        Position
+                    </span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span class="stat-number">
+                        12
+                    </span>
+
+                    <span class="stat-label">
+                        Played
+                    </span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span class="stat-number">
+                        24
+                    </span>
+
+                    <span class="stat-label">
+                        Points
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SPONSOR -->
+        <div class="sponsor">
+
+            <div class="sponsor-label">
+                Main Sponsor
+            </div>
+
+            <div class="sponsor-name">
+                VERTEX LABS
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- BOTTOM NAVIGATION -->
+    <nav class="bottom-nav">
+
+        <button class="nav-item active"
+                onclick="openSection('home')">
+
+            <span class="nav-icon">⌂</span>
+            HOME
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="openSection('squad')">
+
+            <span class="nav-icon">♟</span>
+            SQUAD
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="openSection('fixtures')">
+
+            <span class="nav-icon">◷</span>
+            FIXTURES
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="openSection('table')">
+
+            <span class="nav-icon">▤</span>
+            TABLE
+
+        </button>
+
+
+        <button class="nav-item"
+                onclick="showMenu()">
+
+            <span class="nav-icon">•••</span>
+            MORE
+
+        </button>
+
+    </nav>
+
+</div>
+
+
+<script src="script.js"></script>
 
 </body>
-</html>
+        </html>
