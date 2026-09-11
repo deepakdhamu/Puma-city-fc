@@ -756,12 +756,26 @@ function shopPage(){
 
 function product(name,season,price){
 
+    let image = "";
+
+    if(name === "HOME JERSEY"){
+        image = "Home-kit.png";
+    }
+
+    else if(name === "AWAY JERSEY"){
+        image = "Away-kit.png";
+    }
+
+    else if(name === "THIRD JERSEY"){
+        image = "Third-kit.png";
+    }
+
     return `
 
         <article class="product">
 
             <div class="product-image">
-                PC
+                <img src="${image}" alt="${name}">
             </div>
 
             <div class="product-info">
@@ -800,13 +814,17 @@ function aboutPage(){
 
         <div class="about-visual">
 
-            <h2>
-                SAME CLUB.<br>
-                BIGGER<br>
-                STORIES.
-            </h2>
+    <img src="Stadium.png" alt="Puma City Stadium">
 
-        </div>
+    <div class="about-visual-overlay">
+        <h2>
+            SAME CLUB.<br>
+            BIGGER<br>
+            STORIES.
+        </h2>
+    </div>
+
+</div>
 
         <section class="about-copy">
 
