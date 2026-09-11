@@ -336,3 +336,187 @@ button{
 .nav-item:active{
   transform:scale(.96);
    }
+/* =========================================
+   SQUAD PAGE
+   ========================================= */
+
+.page-hero{
+    padding:42px 20px 30px;
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(33,219,160,.14),
+            transparent 45%
+        );
+}
+
+.page-hero h1{
+    font-size:43px;
+    line-height:.95;
+    letter-spacing:-2px;
+}
+
+.page-hero h1 span{
+    color:var(--green);
+}
+
+.squad-section{
+    padding:0 20px 30px;
+}
+
+.squad-summary{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:9px;
+    margin-bottom:32px;
+}
+
+.squad-summary div{
+    padding:16px 6px;
+    text-align:center;
+    border:1px solid var(--line);
+    border-radius:16px;
+    background:rgba(255,255,255,.035);
+}
+
+.squad-summary strong{
+    display:block;
+    color:var(--green);
+    font-size:23px;
+}
+
+.squad-summary span{
+    display:block;
+    margin-top:5px;
+    color:var(--muted);
+    font-size:7px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.squad-group{
+    margin-bottom:30px;
+}
+
+.player-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:11px;
+}
+
+.player-card{
+    position:relative;
+    min-height:235px;
+    overflow:hidden;
+    border-radius:19px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(33,219,160,.12),
+            rgba(255,255,255,.035)
+        );
+    border:1px solid var(--line);
+    padding:14px;
+    transition:transform .2s ease;
+}
+
+.player-card:active{
+    transform:scale(.97);
+}
+
+.player-number{
+    position:absolute;
+    top:12px;
+    right:13px;
+    color:rgba(255,255,255,.28);
+    font-size:12px;
+    font-weight:900;
+}
+
+.player-avatar{
+    height:125px;
+    margin:-14px -14px 12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+        radial-gradient(
+            circle,
+            rgba(33,219,160,.18),
+            transparent 65%
+        );
+    color:var(--green);
+    font-size:30px;
+    font-weight:900;
+}
+
+.player-info{
+    padding:0 2px;
+}
+
+.player-position{
+    display:inline-block;
+    padding:4px 7px;
+    border-radius:6px;
+    background:rgba(33,219,160,.1);
+    color:var(--green);
+    font-size:8px;
+    font-weight:900;
+}
+
+.player-info h3{
+    margin-top:8px;
+    font-size:15px;
+    line-height:1.1;
+}
+
+.player-meta{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    margin-top:9px;
+    color:var(--muted);
+    font-size:8px;
+}
+
+
+/* COMING SOON */
+
+.coming-page{
+    min-height:70vh;
+    padding:70px 25px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.coming-icon{
+    width:70px;
+    height:70px;
+    margin-bottom:25px;
+    border-radius:22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--green);
+    color:var(--navy);
+    font-size:23px;
+    font-weight:900;
+}
+
+.coming-page h1{
+    font-size:40px;
+    line-height:.95;
+    margin:8px 0 18px;
+}
+
+.coming-page h1 span{
+    color:var(--green);
+}
+
+.coming-page p{
+    color:var(--muted);
+    line-height:1.6;
+    margin-bottom:10px;
+  }
