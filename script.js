@@ -616,6 +616,7 @@ const leagueFixtures = [
     ["20","24 DEC","Zenith FC","Puma City FC","Zenith Arena","19:30"]
 ];
 
+const matchResults = [];
 
 function fixturesPage(){
 
@@ -794,6 +795,74 @@ function resultsPage(){
 
 function tablePage(){
 
+    const table = {};
+
+    leagueTeams.forEach(team => {
+        table[team] = {
+            p:0,
+            w:0,
+            d:0,
+            l:0,
+            gf:0,
+            ga:0,
+            gd:0,
+            pts:0
+        };
+    });
+
+    matchResults.forEach(result => {
+
+        const home = table[result.home];
+        const away = table[result.away];
+
+        home.p++;
+        away.p++;
+
+        home.gf += result.homeGoals;
+        home.ga += result.awayGoals;
+
+        away.gf += result.awayGoals;
+        away.ga += result.homeGoals;
+
+        if(result.homeGoals > result.awayGoals){
+
+            home.w++;
+            home.pts += 3;
+            away.l++;
+
+        }else if(result.homeGoals < result.awayGoals){
+
+            away.w++;
+            away.pts += 3;
+            home.l++;
+
+        }else{
+
+            home.d++;
+            away.d++;
+
+            home.pts++;
+            away.pts++;
+        }
+    });
+
+    Object.values(table).forEach(team => {
+        team.gd = team.gf - team.ga;
+    });
+
+    const sortedTeams = leagueTeams
+        .slice()
+        .sort((a,b) => {
+
+            if(table[b].pts !== table[a].pts)
+                return table[b].pts - table[a].pts;
+
+            if(table[b].gd !== table[a].gd)
+                return table[b].gd - table[a].gd;
+
+            return table[b].gf - table[a].gf;
+        });
+
     app.innerHTML = `
 
         <section class="page-header">
@@ -832,7 +901,6 @@ function tablePage(){
                 <table class="league-table">
 
                     <thead>
-
                         <tr>
                             <th>#</th>
                             <th>TEAM</th>
@@ -843,27 +911,37 @@ function tablePage(){
                             <th>GD</th>
                             <th>PTS</th>
                         </tr>
-
                     </thead>
 
                     <tbody>
 
-                        ${leagueTeams.map((team,index)=>`
+                        ${sortedTeams.map((team,index) => {
 
-                            <tr class="${team === "Puma City FC" ? "puma-row" : ""}">
+                            const t = table[team];
 
-                                <td>${index + 1}</td>
-                                <td>${team}</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td><strong>0</strong></td>
+                            return `
 
-                            </tr>
+                                <tr class="${team === "Puma City FC" ? "puma-row" : ""}">
 
-                        `).join("")}
+                                    <td>${index + 1}</td>
+
+                                    <td>${team}</td>
+
+                                    <td>${t.p}</td>
+                                    <td>${t.w}</td>
+                                    <td>${t.d}</td>
+                                    <td>${t.l}</td>
+                                    <td>${t.gd > 0 ? "+" : ""}${t.gd}</td>
+
+                                    <td>
+                                        <strong>${t.pts}</strong>
+                                    </td>
+
+                                </tr>
+
+                            `;
+
+                        }).join("")}
 
                     </tbody>
 
@@ -874,8 +952,7 @@ function tablePage(){
         </section>
 
     `;
-     }
-
+            }
 /* ================================
    NEWS
 ================================ */
