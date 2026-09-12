@@ -664,6 +664,75 @@ button{
     font-size:20px;
 }
 
+.matchday-label{
+    padding:18px 18px 7px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:"Barlow Condensed",sans-serif;
+    font-size:18px;
+    font-weight:900;
+    color:var(--navy);
+}
+
+.matchday-label span{
+    font-family:Inter,sans-serif;
+    font-size:8px;
+    color:#7b8797;
+    font-weight:800;
+}
+
+.puma-fixture{
+    border:2px solid rgba(33,219,160,.45);
+    background:#f4fffb;
+}
+
+.fixture-vs{
+    color:var(--green);
+}
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+.league-table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:470px;
+    font-size:8px;
+}
+
+.league-table th{
+    background:var(--navy);
+    color:#fff;
+    padding:10px 7px;
+    text-align:center;
+    font-size:7px;
+    letter-spacing:.5px;
+}
+
+.league-table td{
+    padding:12px 6px;
+    border-bottom:1px solid #e3e8ed;
+    text-align:center;
+    font-weight:700;
+}
+
+.league-table td:nth-child(2){
+    text-align:left;
+    font-family:"Barlow Condensed",sans-serif;
+    font-size:15px;
+}
+
+.puma-row{
+    background:rgba(33,219,160,.12);
+}
+
+.puma-row td:first-child,
+.puma-row td:last-child{
+    color:#08a979;
+    font-weight:900;
+}
 
 /* ================================
    SHOP
