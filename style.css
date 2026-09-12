@@ -573,47 +573,120 @@ button{
     box-shadow:0 4px 12px rgba(13,27,61,.04);
 }
 
-.player-photo{
-    width:55px;
-    height:65px;
-    border-radius:7px;
-    background:
-        linear-gradient(145deg,#e5edf3,#c9d5df);
+.player{
     display:flex;
     align-items:center;
-    justify-content:center;
-    color:#738195;
-    font-family:"Barlow Condensed",sans-serif;
-    font-size:18px;
-    font-weight:900;
+    gap:10px;
+    padding:10px;
+    margin-bottom:9px;
+    background:#fff;
+    border:1px solid #e0e5eb;
+    border-radius:13px;
+    box-shadow:0 5px 16px rgba(13,27,61,.05);
+    position:relative;
+    overflow:hidden;
+}
+
+.player:active{
+    transform:scale(.985);
 }
 
 .player-number{
     font-family:"Barlow Condensed",sans-serif;
-    color:#c4ccd5;
+    color:#c5cdd6;
+    font-size:24px;
+    font-weight:900;
+    width:25px;
+    text-align:center;
+}
+
+.player-photo{
+    width:58px;
+    height:68px;
+    flex-shrink:0;
+    border-radius:9px;
+    background:
+        linear-gradient(145deg,#eaf0f4,#cbd7e1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#728095;
+    font-family:"Barlow Condensed",sans-serif;
+    font-size:20px;
+    font-weight:900;
+    overflow:hidden;
+}
+
+.player-photo.gk{
+    background:
+        linear-gradient(145deg,#dffcf2,#b8e9d9);
+    color:#07966d;
+}
+
+.player-photo.def{
+    background:
+        linear-gradient(145deg,#e5edf8,#c9d6e7);
+    color:#304c78;
+}
+
+.player-photo.mid{
+    background:
+        linear-gradient(145deg,#e8f8f3,#c5e9df);
+    color:#078d6a;
+}
+
+.player-photo.fwd{
+    background:
+        linear-gradient(145deg,#eef0fa,#d4d8eb);
+    color:#293e69;
+}
+
+.player-photo span{
+    font-family:"Barlow Condensed",sans-serif;
     font-size:22px;
-    width:20px;
+    font-weight:900;
 }
 
 .player-info{
     flex:1;
+    min-width:0;
+}
+
+.player-role{
+    color:#0cae80;
+    font-size:7px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:3px;
 }
 
 .player-info h3{
     font-family:"Barlow Condensed",sans-serif;
     font-size:21px;
+    line-height:1;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 
 .player-info p{
     color:#7a8798;
     font-size:8px;
-    margin-top:3px;
+    margin-top:5px;
 }
 
 .player-arrow{
-    color:#21b98e;
-    font-size:22px;
-    padding:8px;
+    width:30px;
+    height:30px;
+    flex-shrink:0;
+    border-radius:50%;
+    background:#eefbf7;
+    color:#08ae80;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    font-weight:900;
 }
 
 
