@@ -500,10 +500,122 @@ function playerProfile(name){
     window.scrollTo(0,0);
 }
 
-
 /* ================================
-   FIXTURES
+   FIXTURES & LEAGUE
 ================================ */
+
+const leagueTeams = [
+    "Puma City FC",
+    "Tomashi Warriors",
+    "Rising Sunset Coast",
+    "Real South Tike",
+    "Zenith FC",
+    "Eastern Fire Range"
+];
+
+const leagueFixtures = [
+
+    // MATCHDAY 1 — 23 AUG
+    ["1","23 AUG","Puma City FC","Zenith FC","Puma City Stadium","19:30"],
+    ["1","23 AUG","Eastern Fire Range","Tomashi Warriors","Eastern Fire Range Stadium","19:30"],
+    ["1","23 AUG","Rising Sunset Coast","Real South Tike","Sunset Coast Stadium","19:30"],
+
+    // MATCHDAY 2 — 29 AUG
+    ["2","29 AUG","Eastern Fire Range","Zenith FC","Eastern Fire Range Stadium","19:30"],
+    ["2","29 AUG","Puma City FC","Rising Sunset Coast","Puma City Stadium","19:30"],
+    ["2","29 AUG","Tomashi Warriors","Real South Tike","Tomashi Stadium","19:30"],
+
+    // MATCHDAY 3 — 05 SEP
+    ["3","05 SEP","Tomashi Warriors","Puma City FC","Tomashi Stadium","19:30"],
+    ["3","05 SEP","Eastern Fire Range","Real South Tike","Eastern Fire Range Stadium","19:30"],
+    ["3","05 SEP","Zenith FC","Rising Sunset Coast","Zenith Arena","19:30"],
+
+    // MATCHDAY 4 — 11 SEP
+    ["4","11 SEP","Eastern Fire Range","Rising Sunset Coast","Eastern Fire Range Stadium","19:30"],
+    ["4","11 SEP","Real South Tike","Puma City FC","South Tike Stadium","19:30"],
+    ["4","11 SEP","Zenith FC","Tomashi Warriors","Zenith Arena","19:30"],
+
+    // MATCHDAY 5 — 18 SEP
+    ["5","18 SEP","Rising Sunset Coast","Tomashi Warriors","Sunset Coast Stadium","19:30"],
+    ["5","18 SEP","Real South Tike","Zenith FC","South Tike Stadium","19:30"],
+    ["5","18 SEP","Eastern Fire Range","Puma City FC","Eastern Fire Range Stadium","19:30"],
+
+    // MATCHDAY 6 — 24 SEP
+    ["6","24 SEP","Rising Sunset Coast","Eastern Fire Range","Sunset Coast Stadium","19:30"],
+    ["6","24 SEP","Puma City FC","Real South Tike","Puma City Stadium","19:30"],
+    ["6","24 SEP","Tomashi Warriors","Zenith FC","Tomashi Stadium","19:30"],
+
+    // MATCHDAY 7 — 01 OCT
+    ["7","01 OCT","Real South Tike","Eastern Fire Range","South Tike Stadium","19:30"],
+    ["7","01 OCT","Puma City FC","Tomashi Warriors","Puma City Stadium","19:30"],
+    ["7","01 OCT","Rising Sunset Coast","Zenith FC","Sunset Coast Stadium","19:30"],
+
+    // MATCHDAY 8 — 07 OCT
+    ["8","07 OCT","Real South Tike","Rising Sunset Coast","South Tike Stadium","19:30"],
+    ["8","07 OCT","Zenith FC","Puma City FC","Zenith Arena","19:30"],
+    ["8","07 OCT","Tomashi Warriors","Eastern Fire Range","Tomashi Stadium","19:30"],
+
+    // MATCHDAY 9 — 14 OCT
+    ["9","14 OCT","Tomashi Warriors","Rising Sunset Coast","Tomashi Stadium","19:30"],
+    ["9","14 OCT","Zenith FC","Real South Tike","Zenith Arena","19:30"],
+    ["9","14 OCT","Puma City FC","Eastern Fire Range","Puma City Stadium","19:30"],
+
+    // MATCHDAY 10 — 20 OCT
+    ["10","20 OCT","Zenith FC","Eastern Fire Range","Zenith Arena","19:30"],
+    ["10","20 OCT","Real South Tike","Tomashi Warriors","South Tike Stadium","19:30"],
+    ["10","20 OCT","Rising Sunset Coast","Puma City FC","Sunset Coast Stadium","19:30"],
+
+    // MATCHDAY 11 — 27 OCT
+    ["11","27 OCT","Rising Sunset Coast","Tomashi Warriors","Sunset Coast Stadium","19:30"],
+    ["11","27 OCT","Eastern Fire Range","Puma City FC","Eastern Fire Range Stadium","19:30"],
+    ["11","27 OCT","Real South Tike","Zenith FC","South Tike Stadium","19:30"],
+
+    // MATCHDAY 12 — 02 NOV
+    ["12","02 NOV","Tomashi Warriors","Real South Tike","Tomashi Stadium","19:30"],
+    ["12","02 NOV","Eastern Fire Range","Zenith FC","Eastern Fire Range Stadium","19:30"],
+    ["12","02 NOV","Puma City FC","Rising Sunset Coast","Puma City Stadium","19:30"],
+
+    // MATCHDAY 13 — 09 NOV
+    ["13","09 NOV","Rising Sunset Coast","Real South Tike","Sunset Coast Stadium","19:30"],
+    ["13","09 NOV","Eastern Fire Range","Tomashi Warriors","Eastern Fire Range Stadium","19:30"],
+    ["13","09 NOV","Puma City FC","Zenith FC","Puma City Stadium","19:30"],
+
+    // MATCHDAY 14 — 15 NOV
+    ["14","15 NOV","Eastern Fire Range","Real South Tike","Eastern Fire Range Stadium","19:30"],
+    ["14","15 NOV","Tomashi Warriors","Puma City FC","Tomashi Stadium","19:30"],
+    ["14","15 NOV","Zenith FC","Rising Sunset Coast","Zenith Arena","19:30"],
+
+    // MATCHDAY 15 — 22 NOV
+    ["15","22 NOV","Zenith FC","Tomashi Warriors","Zenith Arena","19:30"],
+    ["15","22 NOV","Real South Tike","Puma City FC","South Tike Stadium","19:30"],
+    ["15","22 NOV","Eastern Fire Range","Rising Sunset Coast","Eastern Fire Range Stadium","19:30"],
+
+    // MATCHDAY 16 — 28 NOV
+    ["16","28 NOV","Puma City FC","Tomashi Warriors","Puma City Stadium","19:30"],
+    ["16","28 NOV","Rising Sunset Coast","Zenith FC","Sunset Coast Stadium","19:30"],
+    ["16","28 NOV","Real South Tike","Eastern Fire Range","South Tike Stadium","19:30"],
+
+    // MATCHDAY 17 — 05 DEC
+    ["17","05 DEC","Tomashi Warriors","Zenith FC","Tomashi Stadium","19:30"],
+    ["17","05 DEC","Rising Sunset Coast","Eastern Fire Range","Sunset Coast Stadium","19:30"],
+    ["17","05 DEC","Puma City FC","Real South Tike","Puma City Stadium","19:30"],
+
+    // MATCHDAY 18 — 11 DEC
+    ["18","11 DEC","Zenith FC","Real South Tike","Zenith Arena","19:30"],
+    ["18","11 DEC","Puma City FC","Eastern Fire Range","Puma City Stadium","19:30"],
+    ["18","11 DEC","Tomashi Warriors","Rising Sunset Coast","Tomashi Stadium","19:30"],
+
+    // MATCHDAY 19 — 18 DEC
+    ["19","18 DEC","Zenith FC","Eastern Fire Range","Zenith Arena","19:30"],
+    ["19","18 DEC","Real South Tike","Tomashi Warriors","South Tike Stadium","19:30"],
+    ["19","18 DEC","Rising Sunset Coast","Puma City FC","Sunset Coast Stadium","19:30"],
+
+    // MATCHDAY 20 — 24 DEC
+    ["20","24 DEC","Real South Tike","Rising Sunset Coast","South Tike Stadium","19:30"],
+    ["20","24 DEC","Tomashi Warriors","Eastern Fire Range","Tomashi Stadium","19:30"],
+    ["20","24 DEC","Zenith FC","Puma City FC","Zenith Arena","19:30"]
+];
+
 
 function fixturesPage(){
 
@@ -511,7 +623,7 @@ function fixturesPage(){
 
         <section class="page-header">
 
-            <small>PUMA CITY FC</small>
+            <small>AURAVIA LEGEND LEAGUE</small>
 
             <h1>
                 FIXTURES
@@ -521,8 +633,9 @@ function fixturesPage(){
 
         <div class="filters">
 
-            <button class="filter active">
-                UPCOMING
+            <button class="filter active"
+                    onclick="fixturesPage()">
+                FIXTURES
             </button>
 
             <button class="filter"
@@ -530,37 +643,57 @@ function fixturesPage(){
                 RESULTS
             </button>
 
-            <button class="filter">
+            <button class="filter"
+                    onclick="tablePage()">
                 TABLE
             </button>
 
         </div>
 
-        ${fixture("20","SEP","RIVAL FC","PUMA CITY FC","RIVERDALE ARENA","19:00")}
-
-        ${fixture("27","SEP","PUMA CITY FC","SKYTON FC","PUMA CITY STADIUM","18:30")}
-
-        ${fixture("04","OCT","UNITED CITY","PUMA CITY FC","NATIONAL ARENA","20:00")}
-
-        ${fixture("11","OCT","PUMA CITY FC","VALOR FC","PUMA CITY STADIUM","18:30")}
-
-        ${fixture("18","OCT","KINGS FC","PUMA CITY FC","KINGS ARENA","19:00")}
+        <div id="fixture-list"></div>
 
     `;
+
+    const box = document.getElementById("fixture-list");
+
+    box.innerHTML = leagueFixtures.map(f => {
+
+        const [md,date,home,away,venue,time] = f;
+
+        return `
+
+            <div class="matchday-label">
+                MATCHDAY ${md}
+                <span>${date}</span>
+            </div>
+
+            ${fixture(md,date,home,away,venue,time)}
+
+        `;
+
+    }).join("");
 }
 
 
-function fixture(day,month,home,away,venue,time){
+function fixture(md,date,home,away,venue,time){
+
+    const isPuma =
+        home === "Puma City FC" ||
+        away === "Puma City FC";
 
     return `
 
-        <article class="fixture">
+        <article class="fixture ${isPuma ? "puma-fixture" : ""}">
 
             <div class="fixture-date">
 
-                <strong>${day}</strong>
+                <strong>
+                    ${date.split(" ")[0]}
+                </strong>
 
-                <span>${month}</span>
+                <span>
+                    ${date.split(" ")[1]}
+                </span>
 
             </div>
 
@@ -569,7 +702,7 @@ function fixture(day,month,home,away,venue,time){
                 <strong>
                     ${home}
                     <br>
-                    VS
+                    <span class="fixture-vs">VS</span>
                     <br>
                     ${away}
                 </strong>
@@ -600,7 +733,7 @@ function resultsPage(){
 
         <section class="page-header">
 
-            <small>PUMA CITY FC</small>
+            <small>AURAVIA LEGEND LEAGUE</small>
 
             <h1>
                 RESULTS
@@ -608,15 +741,140 @@ function resultsPage(){
 
         </section>
 
-        ${fixture("12","SEP","PUMA CITY FC","RIVAL FC","PUMA CITY STADIUM","2 — 1")}
+        <div class="filters">
 
-        ${fixture("06","SEP","SKYTON FC","PUMA CITY FC","SKYTON ARENA","1 — 1")}
+            <button class="filter"
+                    onclick="fixturesPage()">
+                FIXTURES
+            </button>
 
-        ${fixture("30","AUG","PUMA CITY FC","VALOR FC","PUMA CITY STADIUM","3 — 0")}
+            <button class="filter active">
+                RESULTS
+            </button>
+
+            <button class="filter"
+                    onclick="tablePage()">
+                TABLE
+            </button>
+
+        </div>
+
+        <section class="section">
+
+            <div class="news-card">
+
+                <div class="news-body">
+
+                    <span class="news-tag">
+                        SEASON 2026
+                    </span>
+
+                    <h3>
+                        RESULTS WILL APPEAR HERE
+                    </h3>
+
+                    <p>
+                        Match results will be added
+                        after each Legend League game.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
 
     `;
 }
 
+
+/* ================================
+   POINTS TABLE
+================================ */
+
+function tablePage(){
+
+    app.innerHTML = `
+
+        <section class="page-header">
+
+            <small>AURAVIA LEGEND LEAGUE</small>
+
+            <h1>
+                LEAGUE<br>
+                TABLE
+            </h1>
+
+        </section>
+
+        <div class="filters">
+
+            <button class="filter"
+                    onclick="fixturesPage()">
+                FIXTURES
+            </button>
+
+            <button class="filter"
+                    onclick="resultsPage()">
+                RESULTS
+            </button>
+
+            <button class="filter active">
+                TABLE
+            </button>
+
+        </div>
+
+        <section class="section">
+
+            <div class="table-wrap">
+
+                <table class="league-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>#</th>
+                            <th>TEAM</th>
+                            <th>P</th>
+                            <th>W</th>
+                            <th>D</th>
+                            <th>L</th>
+                            <th>GD</th>
+                            <th>PTS</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${leagueTeams.map((team,index)=>`
+
+                            <tr class="${team === "Puma City FC" ? "puma-row" : ""}">
+
+                                <td>${index + 1}</td>
+                                <td>${team}</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td><strong>0</strong></td>
+
+                            </tr>
+
+                        `).join("")}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    `;
+     }
 
 /* ================================
    NEWS
