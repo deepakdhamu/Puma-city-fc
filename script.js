@@ -481,14 +481,15 @@ function playerProfile(name){
 
         <section class="section">
 
-            <div class="player-photo"
-                 style="
-                    width:100%;
-                    height:300px;
-                    font-size:60px;
-                 ">
-                ${p[2] === "GK" ? "GK" : "PC"}
-            </div>
+            <div class="player-photo ${getGroup(p[2]).toLowerCase()}"
+     style="
+        width:100%;
+        height:300px;
+        font-size:70px;
+        border-radius:14px;
+     ">
+    ${p[2] === "GK" ? "GK" : "PCFC"}
+</div>
 
             <div class="stats"
                  style="margin-top:15px">
