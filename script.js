@@ -394,7 +394,17 @@ function renderPlayers(filter){
         return filter === "ALL" || getGroup(p[2]) === filter;
     });
 
-    box.innerHTML = list.map((p)=>`
+    box.innerHTML = list.map((p)=>{
+
+        const group = getGroup(p[2]);
+
+        let groupName = "FORWARD";
+
+        if(group === "GK") groupName = "GOALKEEPER";
+        if(group === "DEF") groupName = "DEFENDER";
+        if(group === "MID") groupName = "MIDFIELDER";
+
+        return `
 
         <article class="player"
                  onclick="playerProfile('${p[1]}')">
@@ -403,13 +413,19 @@ function renderPlayers(filter){
                 ${p[0]}
             </div>
 
-            <div class="player-photo">
-                ${p[2] === "GK" ? "GK" : "PC"}
+            <div class="player-photo ${group.toLowerCase()}">
+                <span>${p[2] === "GK" ? "GK" : "PC"}</span>
             </div>
 
             <div class="player-info">
 
-                <h3>${p[1]}</h3>
+                <div class="player-role">
+                    ${groupName}
+                </div>
+
+                <h3>
+                    ${p[1]}
+                </h3>
 
                 <p>
                     ${p[4]} ${p[3]} • ${p[2]}
@@ -423,8 +439,10 @@ function renderPlayers(filter){
 
         </article>
 
-    `).join("");
-}
+        `;
+
+    }).join("");
+    }
 
 
 function filterPlayers(filter,button){
