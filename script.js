@@ -70,6 +70,8 @@ function openPage(page){
 
 function homePage(){
 
+    const next = getNextPumaMatch();
+
     app.innerHTML = `
 
         <section class="hero">
@@ -129,8 +131,8 @@ function homePage(){
                 </div>
 
                 <span class="view-all">
-                    18 SEP 2026
-                </span>
+    ${next.date} • MD ${next.md}
+</span>
 
             </div>
 
@@ -151,10 +153,13 @@ function homePage(){
                 <div class="teams">
 
                     <div>
-                        <div class="team-badge">PC</div>
-                        <div class="team-name">
-                            PUMA CITY FC
-                        </div>
+                        <div class="team-badge">
+    ${next.home === "Puma City FC" ? "PC" : "EF"}
+</div>
+
+<div class="team-name">
+    ${next.home}
+</div>
                     </div>
 
                     <div class="vs">
@@ -162,17 +167,20 @@ function homePage(){
                     </div>
 
                     <div>
-                        <div class="team-badge">RF</div>
-                        <div class="team-name">
-                            RIVAL FC
-                        </div>
+                        <div class="team-badge">
+    ${next.away === "Puma City FC" ? "PC" : "EF"}
+</div>
+
+<div class="team-name">
+    ${next.away}
+</div>
                     </div>
 
                 </div>
 
                 <div class="match-info">
-                    PUMA CITY STADIUM<br>
-                    18 SEPTEMBER 2026
+                    ${next.venue}<br>
+${next.date} • ${next.time}
                 </div>
 
                 <button class="match-button"
@@ -617,6 +625,43 @@ const leagueFixtures = [
 ];
 
 const matchResults = [];
+
+function getNextPumaMatch(){
+
+    for(let i = 0; i < leagueFixtures.length; i++){
+
+        const f = leagueFixtures[i];
+
+        const md = f[0];
+        const date = f[1];
+        const home = f[2];
+        const away = f[3];
+        const venue = f[4];
+        const time = f[5];
+
+        const alreadyPlayed = matchResults.some(result =>
+            result.matchday === md &&
+            result.home === home &&
+            result.away === away
+        );
+
+        if(
+            !alreadyPlayed &&
+            (home === "Puma City FC" || away === "Puma City FC")
+        ){
+            return {
+                md,
+                date,
+                home,
+                away,
+                venue,
+                time
+            };
+        }
+    }
+
+    return null;
+}
 
 function fixturesPage(){
 
